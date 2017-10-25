@@ -4,7 +4,7 @@
   "description": "A Gzip plugin for [rollup][]. Just gzip, no zopfli included as dependency",
   "repository": "tunnckoCore/rollup-plugin-just-gzip",
   "author": "Charlike Mike Reagent (https://charlike.online)",
-  "nspId": "todo",
+  "nspId": "b5949b72-25be-4cad-ae2c-8f71e4e13242",
   "main": "./src/index.js",
   "scripts": {
     "start": "hela",
@@ -58,7 +58,10 @@
     "lint": {
       "reflinks": true
     },
-    "reflinks": []
+    "reflinks": [
+      "hela",
+      "rollup"
+    ]
   },
   "release": {
     "analyzeCommits": "simple-commit-message"
