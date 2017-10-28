@@ -10,15 +10,15 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - rollup-plugin-just-gzip-{{ checksum "package.json" }}
+          - $CIRCLE_PROJECT_REPONAME-{{ checksum "package.json" }}
           # fallback to using the latest cache if no exact match is found
-          - rollup-plugin-just-gzip-
+          - $CIRCLE_PROJECT_REPONAME-
       - run:
           name: Installing dependencies
           command: yarn install
           when: always
       - save_cache:
-          key: rollup-plugin-just-gzip-{{ checksum "package.json" }}
+          key: $CIRCLE_PROJECT_REPONAME-{{ checksum "package.json" }}
           paths:
             - node_modules
       - run:
@@ -27,7 +27,7 @@ jobs:
           when: on_success
       - run:
           name: Custom
-          command: echo $FOOBIEX
+          command: echo $CIRCLE_PROJECT_REPONAME
           when: always
       - run:
           name: Uploading test coverage
