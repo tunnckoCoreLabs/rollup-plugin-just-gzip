@@ -27,16 +27,18 @@ jobs:
           name: Sending test coverage to CodeCov
           command: bash <(curl -s https://codecov.io/bash)
           when: on_success
+
 workflows:
   version: 2
-  # Runs on 12am UTC every day
-  # to check is the master is stable
-  stability:
+  commit:
     jobs:
       - build
+  stability:
     triggers:
       - schedule:
           cron: "0 0 * * *"
           filters:
             branches:
               only: master
+    jobs:
+      - build
