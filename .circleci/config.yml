@@ -4,32 +4,26 @@ jobs:
     working_directory: ~/rollup-plugin-just-gzip
     docker:
       - image: circleci/node:8
-        environment:
-          FOOBIEX: "barry"
     steps:
       - checkout
       - restore_cache:
           keys:
-          - $CIRCLE_PROJECT_REPONAME-{{ checksum "package.json" }}
+          - rollup-plugin-just-gzip-{{ checksum "package.json" }}
           # fallback to using the latest cache if no exact match is found
-          - $CIRCLE_PROJECT_REPONAME-
+          - rollup-plugin-just-gzip-fallback-
       - run:
           name: Installing dependencies
           command: yarn install
           when: always
       - save_cache:
-          key: $CIRCLE_PROJECT_REPONAME-{{ checksum "package.json" }}
+          key: rollup-plugin-just-gzip-{{ checksum "package.json" }}
           paths:
             - node_modules
       - run:
-          name: Running tests
+          name: Building and testing the project
           command: yarn test
           when: on_success
       - run:
-          name: Custom
-          command: echo $CIRCLE_PROJECT_REPONAME
-          when: always
-      - run:
-          name: Uploading test coverage
+          name: Sending test coverage to CodeCov
           command: bash <(curl -s https://codecov.io/bash)
           when: on_success
