@@ -11,11 +11,25 @@ jobs:
           - rollup-plugin-just-gzip-{{ checksum "package.json" }}
           # fallback to using the latest cache if no exact match is found
           - rollup-plugin-just-gzip-
-      - run: yarn install
+      - run:
+          name: Installing dependencies
+          command: yarn install
+          when: always
+          environment:
+            FOOBIEX: "barry"
       - save_cache:
+          key: rollup-plugin-just-gzip-{{ checksum "package.json" }}
           paths:
             - node_modules
-          key: rollup-plugin-just-gzip-{{ checksum "package.json" }}
-      
-      - run: yarn test
-      - run: bash <(curl -s https://codecov.io/bash)
+      - run:
+          name: Running tests
+          command: yarn test
+          when: on_success
+      - run:
+          name: Custom
+          command: echo $FOOBIEX
+          when: always
+      - run:
+          name: Uploading test coverage
+          command: bash <(curl -s https://codecov.io/bash)
+          when: on_success
