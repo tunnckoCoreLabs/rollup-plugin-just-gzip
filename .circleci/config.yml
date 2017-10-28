@@ -4,6 +4,8 @@ jobs:
     working_directory: ~/rollup-plugin-just-gzip
     docker:
       - image: circleci/node:8
+        environment:
+          FOOBIEX: "barry"
     steps:
       - checkout
       - restore_cache:
@@ -15,8 +17,6 @@ jobs:
           name: Installing dependencies
           command: yarn install
           when: always
-          environment:
-            FOOBIEX: "barry"
       - save_cache:
           key: rollup-plugin-just-gzip-{{ checksum "package.json" }}
           paths:
