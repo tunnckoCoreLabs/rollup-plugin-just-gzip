@@ -30,9 +30,14 @@ jobs:
 
 workflows:
   version: 2
+  
+  # Runs on each commit, pr & etc
   commit:
     jobs:
       - build
+      
+  # Runs on 12am UTC every day, to check
+  # if the master branch is stable and up to date.
   stability:
     triggers:
       - schedule:
