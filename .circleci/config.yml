@@ -32,6 +32,8 @@ workflows:
   # Runs on 12am UTC every day
   # to check is the master is stable
   stability:
+    jobs:
+      - build
     triggers:
       - schedule:
           cron: "0 0 * * *"
