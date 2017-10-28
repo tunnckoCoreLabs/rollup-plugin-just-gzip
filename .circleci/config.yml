@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  node8:
+  build-node8:
     working_directory: ~/repo
     docker:
       - image: circleci/node:8
@@ -21,7 +21,7 @@ jobs:
       - run: yarn test
   
   # Nah... whole same as above, only changed is node 8 to node 6, DAMN SHIT
-  node6:
+  build-node6:
     working_directory: ~/repo
     docker:
       - image: circleci/node:6
