@@ -50,7 +50,7 @@ jobs:
           name: Foo bark
           command: |
             # Foobie comment.
-            mkdir dist && echo foox > dist/zazzy.txt
+            mkdir dist && echo fdgfdfgoox > dist/zazzy.txt
       - store_artifacts:
           path: dist
           destination: dist
@@ -83,10 +83,10 @@ workflows:
             - install
             - test
       - publish:
-          filters:
-            branches:
-              only:
-                - master
+          #filters:
+          #  branches:
+          #    only:
+          #      - master
           context: org-global
           requires:
             - install
