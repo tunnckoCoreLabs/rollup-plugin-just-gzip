@@ -45,27 +45,25 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - *restore_modules_cache
+      - *restore_node_modules
       - run:
-          name: Creating bundles
-          command: 'mkdir dist'
-      - run:
-          name: Foo barring
-          command: 'echo "foo bar" > dist/foo.txt'
+          name: Foo bark
+          command: |
+            # Foobie comment.
+            mkdir dist && echo foox > dist/zazzy.txt
       - store_artifacts:
-        path: dist
+          path: dist
 
   publish:
     <<: *defaults
     steps:
       - checkout
-      - *restore_modules_cache
+      - *restore_node_modules
       - run:
           name: Adding NPM auth token
-          command: 'echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc'
-      - run:
-          name: Releasing to GitHub & NPM
-          command: ls -al ~/.npmrc
+          command: |
+            # Foobie comment.
+            echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
 
 workflows:
   version: 2
