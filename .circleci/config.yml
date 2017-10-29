@@ -65,6 +65,10 @@ jobs:
           command: |
             # Foobie comment.
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+      - run:
+          name: Checking npm
+          command: |
+            ls -al ~/.npmrc
 
 workflows:
   version: 2
