@@ -53,6 +53,7 @@ jobs:
             mkdir dist && echo foox > dist/zazzy.txt
       - store_artifacts:
           path: dist
+          destination: dist
 
   publish:
     <<: *defaults
