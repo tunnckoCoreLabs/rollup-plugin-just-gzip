@@ -45,7 +45,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - *restore_node_modules
+      - *restore_modules_cache
       - run:
           name: Foo bark
           command: |
@@ -58,7 +58,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - *restore_node_modules
+      - *restore_modules_cache
       - run:
           name: Adding NPM auth token
           command: |
