@@ -48,10 +48,10 @@ jobs:
       - *restore_modules_cache
       - run:
           name: Creating bundles
-          command: mkdir dist
+          command: 'mkdir dist'
       - run:
           name: Foo barring
-          command: echo 'foo bar' > dist/foo.txt
+          command: 'echo "foo bar" > dist/foo.txt'
       - store_artifacts:
         path: dist
 
@@ -62,7 +62,7 @@ jobs:
       - *restore_modules_cache
       - run:
           name: Adding NPM auth token
-          command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+          command: 'echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc'
       - run:
           name: Releasing to GitHub & NPM
           command: ls -al ~/.npmrc
