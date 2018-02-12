@@ -27,7 +27,7 @@
     "pify": "3.0.0"
   },
   "devDependencies": {
-    "hela": "2.0.6",
+    "hela": "2.0.8",
     "hela-config-tunnckocore": "2.2.41",
     "mukla": "0.4.9"
   },
