@@ -24,7 +24,7 @@
     "src/"
   ],
   "dependencies": {
-    "pify": "4.0.1"
+    "pify": "6.1.0"
   },
   "devDependencies": {
     "hela": "3.2.2",
